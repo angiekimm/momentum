@@ -1,29 +1,30 @@
-// const h1 = document.querySelector(".hello h1");
-const body = document.body;
-console.log(body);
-function handleTitleClick() {
-  //   const clickedClass = "clicked";
-  //   if (h1.classList.contains(clickedClass)) {
-  //     h1.classList.remove(clickedClass);
-  //   } else {
-  //     h1.classList.add(clickedClass);
-  //   }
-  h1.classList.toggle("clicked");
+const loginForm = document.querySelector("#login-form");
+const loginInput = loginForm.querySelector("input");
+const greeting = document.querySelector("h1");
+
+const HIDDEN_CLASSNAME = "hidden";
+const USERNAME_KEY = "username";
+
+function onLoginSumit(event) {
+  event.preventDefault();
+  loginForm.classList.add(HIDDEN_CLASSNAME);
+  const username = loginInput.value;
+  localStorage.setItem(USERNAME_KEY, username);
+  paintGreeting(username);
 }
-// h1.addEventListener("click", handleTitleClick);
-function handleResize() {
-  if (window.innerWidth < 600) {
-    body.classList.remove("yellow");
-    body.classList.remove("purple");
-    body.classList.add("blue");
-  } else if (window.innerWidth >= 600 & window.innerWidth < 800) {
-    body.classList.remove("yellow");
-    body.classList.remove("blue");
-    body.classList.add("purple");
-  } else {
-    body.classList.remove("blue");
-    body.classList.remove("purple");
-    body.classList.add("yellow");
-  }
+
+function paintGreeting(username) {
+  greeting.innerText = `Hello ${username}!`;
+  greeting.classList.remove(HIDDEN_CLASSNAME);
 }
-window.addEventListener("resize", handleResize);
+
+const savedUsername = localStorage.getItem(USERNAME_KEY);
+
+if (savedUsername === null) {
+  // username 입력받기
+  loginForm.classList.remove(HIDDEN_CLASSNAME);
+  loginForm.addEventListener("submit", onLoginSumit);
+} else {
+  // greeting h1
+  paintGreeting(savedUsername);
+}
