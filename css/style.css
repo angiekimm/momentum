@@ -1,3 +1,79 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Damion|Muli:400,600");
+
+body {
+  font-family: "Muli", sans-serif;
+}
+
 .hidden {
   display: none;
+}
+
+.background {
+  position: relative
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+
+  color: white;
+}
+
+#clock {
+  font-size: 100px;
+}
+
+:focus {
+  outline: none;
+}
+
+input[type="text"] {
+  font: 15px/24px "Muli", Arial, sans-serif;
+  color: white;
+  width: 110%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  background-color: transparent;
+
+  float: left;
+  margin: 40px 3%;
+  position: relative;
+
+  border: 0;
+  padding: 7px 0;
+  border-bottom: 1px solid rgb(255, 255, 255);
+}
+input::placeholder {
+  color: white;
+}
+
+li {
+  list-style-type: none;
+  margin-bottom: 3px;
+}
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding-right: 5px;
+}
+
+#quote {
+  position: absolute;
+  bottom: 15px;
+}
+
+#weather {
+  position: absolute;
+right: 20px;
+top: 30px;
 }
